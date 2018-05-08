@@ -9,9 +9,12 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "engines":{"node": "8.9"},
+  "engines": {
+    "node": "8.9"
+  },
   "private": true,
   "dependencies": {
+    "@angular-redux/store": "^7.1.1",
     "@angular/animations": "^6.0.0",
     "@angular/cdk": "^6.0.0",
     "@angular/common": "^6.0.0",
@@ -26,6 +29,8 @@
     "@angular/router": "^6.0.0",
     "@angular/service-worker": "^6.0.0",
     "core-js": "^2.5.4",
+    "ng-redux": "^4.0.3",
+    "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
