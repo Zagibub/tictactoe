@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { BootState } from '../app/state/reducer';
 
 @Component({
   selector: 'app-tictactoe-tile',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent implements OnInit {
+  @Input() boot: BootState;
+
   constructor() { }
 
   ngOnInit(): void {
