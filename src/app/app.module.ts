@@ -8,16 +8,25 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { AppComponent } from './app.component';
 import { rootReducer, AppState } from '../store';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BootAppSagas } from './state/sagas';
 import { bootActions } from './state/actions';
 import { TileModule } from '../tile/tile.module';
-import { MatSpinner  } from '@angular/material';
+import { MatSpinner, MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TileComponent } from '../tile/tile.component';
+import { CookieModule } from 'ngx-cookie';
+import { DocumentsComponent } from '../documents/documents.component';
+import { LoginGuard } from '../guard/login-guard';
 
+
+const routes: Routes = [
+  { path: '', component: TileComponent },
+  { path: 'document', component: DocumentsComponent, canActivate: [LoginGuard] }
+];
 @NgModule({
-  declarations: [AppComponent, MatSpinner],
+  declarations: [AppComponent, MatSpinner, DocumentsComponent],
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
@@ -25,10 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgReduxRouterModule,
     HttpClientModule,
     TileModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    CookieModule.forRoot(),
+    MatCardModule
   ],
-
-  providers: [NgReduxRouter, TileModule, BootAppSagas],
+  exports: [RouterModule, MatCardModule],
+  providers: [NgReduxRouter, TileModule, BootAppSagas, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

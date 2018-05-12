@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-code-pin',
@@ -6,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./code-pin.component.scss']
 })
 export class CodePinComponent implements OnInit {
-  constructor() {}
+  constructor(private _cookieService: CookieService, private router: Router) {}
+
   @Input() inputdigits = [];
   valid = false;
   ngOnInit(): void {}
@@ -28,6 +31,10 @@ export class CodePinComponent implements OnInit {
       const value = this.inputdigits.join('');
       if (value !== '1505') {
         alert('Falscher PIN');
+        this.valid = true;
+      } else {
+        this._cookieService.put('pin_accepted', '1505');
+        this.router.navigate(['/document']);
       }
     }
   }

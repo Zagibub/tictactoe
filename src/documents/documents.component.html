@@ -1,0 +1,29 @@
+<mat-card *ngIf="bootState == 'BOOTED'" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Persönlicher Bereich</mat-card-title>
+    <mat-card-subtitle>Guten Tag Elena</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Ihre Familie hat Ihnen 3 Reiseziele zur Wahl gestellt. Suchen Sie sich Ihren Favoriten aus und laden sie den Reisegutschein
+      herunter.
+    </p>
+  </mat-card-content>
+  <div class='flex'>
+    <div (click)='click("paris")'>
+      <div class='paris'></div>
+      <p>Paris</p>
+      <img src='../assets/download.png' />
+    </div>
+    <div (click)='click("prag")'>
+      <div class='prag'></div>
+      <p>Prag</p>
+      <img src='../assets/download.png' />
+    </div>
+    <div (click)='click("amst")'>
+      <div class='amsterdam'></div>
+      <p>Amsterdam</p>
+      <img src='../assets/download.png' />
+    </div>
+  </div>
+</mat-card>
