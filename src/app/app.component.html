@@ -1,2 +1,5 @@
-<app-tictactoe-tile *ngIf="bootState == 'BOOTED'">
-</app-tictactoe-tile>
+<div class='background-image-container'>
+  <mat-spinner class='pseudoloading' *ngIf="bootState != 'BOOTED'"></mat-spinner>
+  <app-tictactoe-tile *ngIf="bootState == 'BOOTED'">
+  </app-tictactoe-tile>
+</div>

@@ -1,4 +1,4 @@
-import { SagaIterator, takeEvery } from 'redux-saga';
+import { SagaIterator, takeEvery, delay } from 'redux-saga';
 import { getType } from 'typesafe-actions';
 import { call, put } from 'redux-saga/effects';
 import { Injector, Inject } from '@angular/core';
@@ -10,7 +10,8 @@ export class BootAppSagas {
   }
 
   public *bootSaga() {
-   yield put(bootActions.boot_complete());
+    yield delay(1000);
+    yield put(bootActions.boot_complete());
   }
 
   *main() {

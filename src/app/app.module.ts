@@ -5,10 +5,7 @@ import { SagaIterator } from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { Reducer, applyMiddleware, createStore } from 'redux';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import {
-  NgReduxModule,
-  NgRedux
-} from '@angular-redux/store';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { AppComponent } from './app.component';
 import { rootReducer, AppState } from '../store';
 import { Router, RouterModule } from '@angular/router';
@@ -16,9 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BootAppSagas } from './state/sagas';
 import { bootActions } from './state/actions';
 import { TileModule } from '../tile/tile.module';
+import { MatSpinner  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MatSpinner],
   imports: [
     RouterModule.forRoot([]),
     BrowserModule,
@@ -44,9 +43,7 @@ export class AppModule {
     this.sagas.push(bootAppSagas.main.bind(bootAppSagas));
     this.rootReducer = rootReducer;
     const sagaMiddleware = createSagaMiddleware();
-    const enhancer = (
-      applyMiddleware(createLogger(), sagaMiddleware)
-    );
+    const enhancer = applyMiddleware(createLogger(), sagaMiddleware);
     const store = createStore(this.rootReducer, enhancer);
     this.sagas.forEach(saga =>
       sagaMiddleware.run(saga).done.catch(err => {

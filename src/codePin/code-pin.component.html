@@ -1,0 +1,20 @@
+<div class='input'>
+  <div [ngClass]="{'in-valid' : valid }" class='input-digit first-digit'>{{inputdigits[0]}}</div>
+  <div [ngClass]="{'in-valid' : valid }" class='input-digit second-digit'>{{inputdigits[1]}}</div>
+  <div [ngClass]="{'in-valid' : valid }" class='input-digit third-digit'>{{inputdigits[2]}}</div>
+  <div [ngClass]="{'in-valid' : valid }" class='input-digit fourth-digit'>{{inputdigits[3]}}</div>
+</div>
+<div class='dial-pad'>
+  <div (click)='click(1)' class='dial-pad-button'>1</div>
+  <div (click)='click(2)' class='dial-pad-button'>2</div>
+  <div (click)='click(3)' class='dial-pad-button'>3</div>
+  <div (click)='click(4)' class='dial-pad-button'>4</div>
+  <div (click)='click(5)' class='dial-pad-button'>5</div>
+  <div (click)='click(6)' class='dial-pad-button'>6</div>
+  <div (click)='click(7)' class='dial-pad-button'>7</div>
+  <div (click)='click(8)' class='dial-pad-button'>8</div>
+  <div (click)='click(9)' class='dial-pad-button'>9</div>
+  <div (click)='click(0)' class='dial-pad-button'>0</div>
+</div>
+<button (click)='clear()' mat-button color="warn">LÖSCHEN</button>
+<button (click)='send()' mat-button color="primary">ABSENDEN</button>

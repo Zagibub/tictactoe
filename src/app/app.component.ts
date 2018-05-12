@@ -3,6 +3,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { AppState } from '../store';
 import { Observable } from 'rxjs';
 import { BootState } from './state/reducer';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
